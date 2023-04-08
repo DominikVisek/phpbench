@@ -1,0 +1,13 @@
+{
+    "name": "dominikvisek/phpbench",
+    "type": "project",
+    "require": {
+        "phpbench/phpbench": "^1.2",
+        "digitalcz/coding-standard": "^0.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Benchmarks\\": "src/"
+        }
+    }
+}

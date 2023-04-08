@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  php:
+    container_name: phpbench
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - ./:/srv/app:rw,cached,z
+    environment:
+      - COMPOSER_MEMORY_LIMIT=-1
+    tty: true
