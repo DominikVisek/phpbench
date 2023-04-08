@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Benchmarks\Benchmarks;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use PhpBench\Benchmark\Metadata\Annotations\Iterations;
 use PhpBench\Benchmark\Metadata\Annotations\OutputTimeUnit;
 use PhpBench\Benchmark\Metadata\Annotations\Revs;
@@ -154,6 +155,26 @@ final class CheckIfValueIsInArrayBench extends BaseBench
 
         foreach (self::RANDOM_ARRAY as $value) {
             $output = isset($keys[$value]);
+            $this->assertSame($output, true);
+        }
+    }
+
+    public function benchByDoctrineCollection()
+    {
+        $collection = new ArrayCollection(self::RANDOM_ARRAY);
+
+        foreach (self::RANDOM_ARRAY as $value) {
+            $output = $collection->contains($value);
+            $this->assertSame($output, true);
+        }
+    }
+
+    public function benchByDoctrineCollection2()
+    {
+        $collection = new ArrayCollection(array_flip(self::RANDOM_ARRAY));
+
+        foreach (self::RANDOM_ARRAY as $value) {
+            $output = $collection->containsKey($value);
             $this->assertSame($output, true);
         }
     }

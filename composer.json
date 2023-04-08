@@ -3,7 +3,8 @@
     "type": "project",
     "require": {
         "phpbench/phpbench": "^1.2",
-        "digitalcz/coding-standard": "^0.0.1"
+        "digitalcz/coding-standard": "^0.0.1",
+        "doctrine/collections": "^2.1"
     },
     "autoload": {
         "psr-4": {
